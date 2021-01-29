@@ -1,5 +1,9 @@
-﻿@using elsa_blazor.Models
-@page "/"
+﻿@page "/"
+@using elsa_blazor.Models
+@using Elsa.Activities.Workflows.Extensions
+@using Elsa.Models
+@using Elsa.Services 
+@inject IWorkflowInvoker WorkflowInvoker
 
 <div class="form-signup">
     <EditForm Model="@RegistrationModel" OnValidSubmit="@HandleFormSubmission" hidden="@ShowConfirmation">
@@ -29,7 +33,10 @@
 
     private async Task HandleFormSubmission()
     {
-        // TODO: Invoke workflow.
+        var input = new Variables();
+        input.SetVariable("RegistrationModel", RegistrationModel);
+
+        await WorkflowInvoker.TriggerSignalAsync("RegisterUser", input);
         ShowConfirmation = true;
     }
 

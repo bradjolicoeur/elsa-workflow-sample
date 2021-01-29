@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Elsa" Version="1.5.3.1369" />
     <PackageReference Include="Elsa.Dashboard" Version="1.5.3.1369" />
+    <PackageReference Include="Elsa.Persistence.MongoDb" Version="1.5.3.1369" />
   </ItemGroup>
 
 </Project>
